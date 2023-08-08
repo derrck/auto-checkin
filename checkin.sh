@@ -24,7 +24,7 @@ text="GLaDOS: $sign_message 剩余 $status_days 天"
 # text=${text//\"/}
 # text="${text// /%20}"
 # 将字符串进行URL编码
-text=$(printf "%s" "$text" | xxd -plain | tr -d '\n' | sed 's/\(..\)/%\1/g')
+#text=$(printf "%s" "$text" | xxd -plain | tr -d '\n' | sed 's/\(..\)/%\1/g')
 
-url="https://api2.pushdeer.com/message/push?pushkey=${key}&text=${text}"
-curl -X GET "$url"
+#url="https://api2.pushdeer.com/message/push?pushkey=${key}&text=${text}"
+#curl -X GET "$url"
