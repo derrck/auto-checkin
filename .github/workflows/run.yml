@@ -1,0 +1,25 @@
+name: GLaDOS-checkin
+
+on:
+  push:
+  pull_request:
+  watch:
+    types: [ started ]
+  # 允许您手动从Actions选项卡中运行此工作流
+  workflow_dispatch:
+  schedule:
+    - cron: 0 */6 * * *
+
+jobs:
+  GLaDOS-checkin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: checkin
+        env:
+          COOKIE: ${{ secrets.COOKIE }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+        run: |
+          ./checkin.sh
