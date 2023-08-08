@@ -2,7 +2,7 @@ if [ -f .env ]; then
   source .env
 fi
 
-key="${PUSH_KEY}"
+#key="${PUSH_KEY}"
 
 # 定义函数来提取JSON字段的值
 get_json_value() {
@@ -21,6 +21,7 @@ status_days=$(get_json_value "$status_result" leftDays)
 status_days=$(echo "$status_days" | bc -l | cut -d '.' -f 1)
 
 text="GLaDOS: $sign_message 剩余 $status_days 天"
+echo text
 # text=${text//\"/}
 # text="${text// /%20}"
 # 将字符串进行URL编码
