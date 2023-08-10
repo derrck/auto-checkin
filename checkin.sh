@@ -1,16 +1,13 @@
-if [ -f .env ]; then
-  source .env
-fi
-
 #key="${PUSH_KEY}"
 
 # 定义函数来提取JSON字段的值
-get_json_value() {
-    echo "$1" | grep -o "\"$2\":\"[^\"]*\"" | cut -d ":" -f 2 | sed 's/"//g'
-}
+# get_json_value() {
+#     echo "$1" | grep -o "\"$2\":\"[^\"]*\"" | cut -d ":" -f 2 | sed 's/"//g'
+# }
 
 echo '------------------sign------------------'
 sign_result=$(curl -H "Cookie:${COOKIE}" -H "Origin:https://glados.rocks" -H 'Content-Type: application/json; charset=utf-8' -d '{"token": "glados.one"}' -X POST 'https://glados.rocks/api/user/checkin')
+echo "Cookie:${COOKIE}"
 echo "$sign_result" | grep -Eo '"message":"[^"]*"'
 #sign_message=$(echo "$sign_result" | grep -Eo '"message":"[^"]*"')
 #sign_message=$(get_json_value "$sign_result" message) 
